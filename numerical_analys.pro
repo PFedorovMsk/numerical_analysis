@@ -246,7 +246,9 @@ HEADERS += \
     tests/linear_algebra_test.h \
     src/linear_algebra/jacobi_eigenvalues.h \
     src/linear_algebra/lu_decomposition.h \
-    src/linear_algebra/qr_eigenvalues.h
+    src/linear_algebra/qr_eigenvalues.h \
+    src/nonlinear_equations/bisection_method.h \
+    src/nonlinear_equations/function.h
 
 SOURCES += \
     src/main.cc \
@@ -258,6 +260,7 @@ SOURCES += \
     tests/linear_algebra_test.cc \
     src/linear_algebra/jacobi_eigenvalues.cc \
     src/linear_algebra/lu_decomposition.cc \
-    src/linear_algebra/qr_eigenvalues.cc
+    src/linear_algebra/qr_eigenvalues.cc \
+    src/nonlinear_equations/bisection_method.cc
 
 DISTFILES +=
