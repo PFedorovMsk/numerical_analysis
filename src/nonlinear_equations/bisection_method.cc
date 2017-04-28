@@ -5,7 +5,7 @@ BisectionMethod::BisectionMethod()
 {
 }
 
-bool findRoot(const Function &f, double a, double b, double tol, int &iterations, double &root)
+bool BisectionMethod::findRoot(const Function &f, double a, double b, double tol, int &iterations, double &root)
 {
     if (fabs(f(a)) < Const::EPS) {
         root = a;
