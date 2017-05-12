@@ -56,10 +56,15 @@ void testTridiagonalMatrix()
     Vector b(5);
     b << -122, -48, -14, -50, 42;
 
-    Vector x = TridiagonalMmatrixSolver::solve(a, b);
+    Vector x;
+    bool   ok = TridiagonalMmatrixSolver::solve(a, b, x);
 
-    fout << "A =\n" << a << "\n\nb =\n" << b << "\n\nx =\n" << x << "\n\n* * * * * * * * * *\n\n";
-    fout << "e = A * x - b =\n" << a * x - b << "\n";
+    if (ok) {
+        fout << "A =\n" << a << "\n\nb =\n" << b << "\n\nx =\n" << x << "\n\n* * * * * * * * * *\n\n";
+        fout << "e = A * x - b =\n" << a * x - b << "\n";
+    } else {
+        fout << "The condition of a correctness or stability isn't satisfied\n";
+    }
 
     fout.close();
 }

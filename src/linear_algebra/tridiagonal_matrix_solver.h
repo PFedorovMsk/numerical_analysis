@@ -9,8 +9,8 @@ class TridiagonalMmatrixSolver
 public:
     TridiagonalMmatrixSolver();
 
-    static Vector solve(const Matrix &lhs, const Vector &rhs);
-    static Vector solve(const Vector &a, const Vector &b, const Vector &c, const Vector &rhs);
+    static bool solve(const Matrix &lhs, const Vector &rhs, Vector &x);
+    static bool solve(const Vector &a, const Vector &b, const Vector &c, const Vector &rhs, Vector &x);
 };
 
 

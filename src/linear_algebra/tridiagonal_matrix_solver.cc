@@ -5,7 +5,7 @@ TridiagonalMmatrixSolver::TridiagonalMmatrixSolver()
 {
 }
 
-Vector TridiagonalMmatrixSolver::solve(const Matrix &lhs, const Vector &rhs)
+bool TridiagonalMmatrixSolver::solve(const Matrix &lhs, const Vector &rhs, Vector &x)
 {
     int size = rhs.size();
 
@@ -27,15 +27,31 @@ Vector TridiagonalMmatrixSolver::solve(const Matrix &lhs, const Vector &rhs)
     b(size - 1) = lhs(size - 1, size - 1);
     c(size - 1) = 0.0;
 
-    return solve(a, b, c, rhs);
+    return solve(a, b, c, rhs, x);
 }
 
-Vector TridiagonalMmatrixSolver::solve(const Vector &a, const Vector &b, const Vector &c, const Vector &rhs)
+bool TridiagonalMmatrixSolver::solve(const Vector &a, const Vector &b, const Vector &c, const Vector &rhs, Vector &x)
 {
     int size = rhs.size();
     assert(a.size() == size);
     assert(b.size() == size);
     assert(c.size() == size);
+
+    // is correct?
+    for (int i = 0; i < size; ++i) {
+        if (std::fabs(a(i)) < 0 || std::fabs(b(i)) <= 0 || std::fabs(c(i)) < 0) {
+            return false;
+        }
+    }
+    for (int i = 1; i < size - 1; ++i) {
+        if (std::fabs(b(i)) < std::fabs(a(i)) + std::fabs(c(i))) {
+            return false;
+        }
+    }
+    if (std::fabs(b(0)) < std::fabs(c(0)) || std::fabs(b(size - 1)) < std::fabs(a(size - 1))) {
+        return false;
+    }
+    // end
 
     Vector A = Vector::Zero(size);
     Vector B = Vector::Zero(size);
@@ -51,11 +67,11 @@ Vector TridiagonalMmatrixSolver::solve(const Vector &a, const Vector &b, const V
     A(size - 1) = 0.0;
     B(size - 1) = (rhs(size - 1) - a(size - 1) * B(size - 2)) / (b(size - 1) + a(size - 1) * A(size - 2));
 
-    Vector x    = Vector::Zero(size);
+    x           = Vector::Zero(size);
     x(size - 1) = B(size - 1);
     for (int i = size - 1; i > 0; --i) {
         x(i - 1) = A(i - 1) * x(i) + B(i - 1);
     }
 
-    return x;
+    return true;
 }
