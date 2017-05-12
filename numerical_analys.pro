@@ -248,7 +248,9 @@ HEADERS += \
     src/linear_algebra/lu_decomposition.h \
     src/linear_algebra/qr_eigenvalues.h \
     src/nonlinear_equations/bisection_method.h \
-    src/nonlinear_equations/function.h
+    src/nonlinear_equations/function.h \
+    src/nonlinear_equations/newtons_method.h \
+    tests/nonlinear_equations_test.h
 
 SOURCES += \
     src/main.cc \
@@ -261,6 +263,8 @@ SOURCES += \
     src/linear_algebra/jacobi_eigenvalues.cc \
     src/linear_algebra/lu_decomposition.cc \
     src/linear_algebra/qr_eigenvalues.cc \
-    src/nonlinear_equations/bisection_method.cc
+    src/nonlinear_equations/bisection_method.cc \
+    src/nonlinear_equations/newtons_method.cc \
+    tests/nonlinear_equations_test.cc
 
 DISTFILES +=
