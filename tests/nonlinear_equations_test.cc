@@ -2,6 +2,7 @@
 
 #include "src/nonlinear_equations/bisection_method.h"
 #include "src/nonlinear_equations/newtons_method.h"
+#include "src/nonlinear_equations/simple_iteration_method.h"
 
 #include <fstream>
 #include <iostream>
@@ -157,8 +158,53 @@ void testNewtonsMethod()
     fout.close();
 }
 
+void testSimpleIterationMethod()
+{
+    std::ofstream fout("test_simple_iter.txt");
+
+    fout << "Test simple iteration's method.\n\n";
+
+    Func1 f1;
+    Func2 f2;
+    Func3 f3;
+
+    std::vector<Function *> funcs(3);
+    funcs[0] = &f1;
+    funcs[1] = &f2;
+    funcs[2] = &f3;
+
+    std::vector<double> x0(3), x(3);
+
+    x0[0] = 1.0;
+    x0[1] = 1.2;
+    x0[2] = -0.2;
+
+    for (size_t j = 0; j < 3; ++j) {
+        fout << "f" << j + 1 << "(x) = 0:\n\n";
+        double tol = 0.001;
+        int    it;
+        for (int i = 0; i < 5; ++i) {
+            fout << "tol = " << tol << ":\n";
+            if (SimpleIterationMethod::findRoot(*(funcs[j]), x0[j], tol, it, x[j])) {
+                fout << "x = " << x[j] << "\n";
+                fout << "iterations: " << it << "\n";
+            } else {
+                fout << "no roots\n";
+            }
+            tol *= 0.1;
+            fout << "\n";
+        }
+        fout << "\n************************************\n\n";
+    }
+
+
+    fout.close();
+}
+
+
 void testNonlinearEquations()
 {
     testBisectionMethod();
     testNewtonsMethod();
+    testSimpleIterationMethod();
 }

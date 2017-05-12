@@ -4,6 +4,7 @@
 
 void testBisectionMethod();
 void testNewtonsMethod();
+void testSimpleIterationMethod();
 
 void testNonlinearEquations();
 
