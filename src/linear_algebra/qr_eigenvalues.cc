@@ -1,5 +1,6 @@
 #include "qr_eigenvalues.h"
 #include <complex>
+#include <vector>
 
 using Complex = std::complex<double>;
 using CPair   = std::pair<Complex, Complex>;
