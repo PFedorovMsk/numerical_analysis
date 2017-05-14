@@ -10,7 +10,8 @@ class GaussSeidelSolver
 public:
     GaussSeidelSolver();
 
-    static Vector solve(const Matrix &lhs, const Vector &rhs, int &iterations, double tol = Const::EPS);
+    static Vector solve(const Matrix &lhs, const Vector &rhs, int &iterations,
+                        double tol = Const::EPS);
 
     inline static bool removeZeroesFromDiagonal(Matrix &lhs, Vector &rhs);
 };

@@ -60,7 +60,10 @@ void testTridiagonalMatrix()
     bool   ok = TridiagonalMmatrixSolver::solve(a, b, x);
 
     if (ok) {
-        fout << "A =\n" << a << "\n\nb =\n" << b << "\n\nx =\n" << x << "\n\n* * * * * * * * * *\n\n";
+        fout << "A =\n"
+             << a << "\n\nb =\n"
+             << b << "\n\nx =\n"
+             << x << "\n\n* * * * * * * * * *\n\n";
         fout << "e = A * x - b =\n" << a * x - b << "\n";
     } else {
         fout << "The condition of a correctness or stability isn't satisfied\n";
@@ -185,7 +188,8 @@ void testQR()
         QREigenvalues::compute(mat, eigenValues, it, err, tol[i]);
         itByTol.push_back({tol[i], it});
 
-        fout << "\n\n* * * * * * * * * *\n\ntol = " << tol[i] << ", err = " << err << ", iterations count: " << it;
+        fout << "\n\n* * * * * * * * * *\n\ntol = " << tol[i] << ", err = " << err
+             << ", iterations count: " << it;
         fout << "\n\neigen values:\n" << eigenValues << "\n";
     }
 
@@ -218,8 +222,11 @@ void testJacobiEigenvalue()
         JacobiEigenvalues::compute(mat, eigenValues, eigenVectors, it, err, tol[i]);
         itByTol.push_back({tol[i], it});
 
-        fout << "\n\n* * * * * * * * * *\n\ntol = " << tol[i] << ", err = " << err << ", iterations count: " << it;
-        fout << "\n\neigen values:\n" << eigenValues << "\n\neigen vectors:\n" << eigenVectors << "\n";
+        fout << "\n\n* * * * * * * * * *\n\ntol = " << tol[i] << ", err = " << err
+             << ", iterations count: " << it;
+        fout << "\n\neigen values:\n"
+             << eigenValues << "\n\neigen vectors:\n"
+             << eigenVectors << "\n";
     }
 
     fout << "\n\n* * * * * * * * * *\n\nTolerance : Iterations\n";

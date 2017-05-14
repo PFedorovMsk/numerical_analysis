@@ -10,7 +10,8 @@ public:
     TridiagonalMmatrixSolver();
 
     static bool solve(const Matrix &lhs, const Vector &rhs, Vector &x);
-    static bool solve(const Vector &a, const Vector &b, const Vector &c, const Vector &rhs, Vector &x);
+    static bool solve(const Vector &a, const Vector &b, const Vector &c, const Vector &rhs,
+                      Vector &x);
 };
 
 

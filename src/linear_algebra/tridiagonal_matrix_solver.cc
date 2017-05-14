@@ -30,7 +30,8 @@ bool TridiagonalMmatrixSolver::solve(const Matrix &lhs, const Vector &rhs, Vecto
     return solve(a, b, c, rhs, x);
 }
 
-bool TridiagonalMmatrixSolver::solve(const Vector &a, const Vector &b, const Vector &c, const Vector &rhs, Vector &x)
+bool TridiagonalMmatrixSolver::solve(const Vector &a, const Vector &b, const Vector &c,
+                                     const Vector &rhs, Vector &x)
 {
     int size = rhs.size();
     assert(a.size() == size);
@@ -65,7 +66,8 @@ bool TridiagonalMmatrixSolver::solve(const Vector &a, const Vector &b, const Vec
         B(i)               = (rhs(i) - a(i) * B(i - 1)) / denominator;
     }
     A(size - 1) = 0.0;
-    B(size - 1) = (rhs(size - 1) - a(size - 1) * B(size - 2)) / (b(size - 1) + a(size - 1) * A(size - 2));
+    B(size - 1) =
+        (rhs(size - 1) - a(size - 1) * B(size - 2)) / (b(size - 1) + a(size - 1) * A(size - 2));
 
     x           = Vector::Zero(size);
     x(size - 1) = B(size - 1);

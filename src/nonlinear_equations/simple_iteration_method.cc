@@ -5,7 +5,8 @@ SimpleIterationMethod::SimpleIterationMethod()
 {
 }
 
-bool SimpleIterationMethod::findRoot(const Function &f, double x0, double tol, int &iterations, double &root)
+bool SimpleIterationMethod::findRoot(const Function &f, double x0, double tol, int &iterations,
+                                     double &root)
 {
     iterations = 0;
     double x   = x0;
@@ -22,8 +23,8 @@ bool SimpleIterationMethod::findRoot(const Function &f, double x0, double tol, i
     return false;
 }
 
-bool SimpleIterationMethod::findRoot(const MultivarFunction &f, const Vector &initX, double tol, int &iterations,
-                                     Vector &root)
+bool SimpleIterationMethod::findRoot(const MultivarFunction &f, const Vector &initX, double tol,
+                                     int &iterations, Vector &root)
 {
     iterations = 0;
     Vector x   = initX;

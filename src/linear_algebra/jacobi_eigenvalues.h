@@ -10,8 +10,8 @@ class JacobiEigenvalues
 public:
     JacobiEigenvalues();
 
-    static void compute(const Matrix &mat, Vector &eigenValues, Matrix &eigenVectors, int &iterations, double &error,
-                        double tol = Const::EPS);
+    static void compute(const Matrix &mat, Vector &eigenValues, Matrix &eigenVectors,
+                        int &iterations, double &error, double tol = Const::EPS);
 };
 
 

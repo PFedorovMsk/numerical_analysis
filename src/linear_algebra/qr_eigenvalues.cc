@@ -74,7 +74,8 @@ inline CPair SolveSquareEquation(Complex a, Complex b, Complex c)
     return CPair(x1, x2);
 }
 
-void QREigenvalues::compute(const Matrix &mat, CVector &eigenValues, int &iterations, double &error, double tol)
+void QREigenvalues::compute(const Matrix &mat, CVector &eigenValues, int &iterations, double &error,
+                            double tol)
 {
     eigenValues.resize(mat.rows());
 

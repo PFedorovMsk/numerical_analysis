@@ -58,7 +58,8 @@ int main()
     double xMax = Const::PI;
 
     /*(double _a, double _b, double _c, Function2 *const _f, double _alpha, double _beta,
-                      Function *const _phi1, double _gamma, double _delta, Function *const _phi2, Function *const _psi,
+                      Function *const _phi1, double _gamma, double _delta, Function *const _phi2,
+       Function *const _psi,
                       double _xMax, double _tMax);*/
     F        f;
     Phi1     phi1;

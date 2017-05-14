@@ -5,8 +5,8 @@ NewtonsMethod::NewtonsMethod()
 {
 }
 
-bool NewtonsMethod::findRoot(const Function &f, const Function &df, double x0, double tol, int &iterations,
-                             double &root)
+bool NewtonsMethod::findRoot(const Function &f, const Function &df, double x0, double tol,
+                             int &iterations, double &root)
 {
     iterations = 0;
     double x   = x0;

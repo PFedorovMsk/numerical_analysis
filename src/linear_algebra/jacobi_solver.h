@@ -10,7 +10,8 @@ class JacobiSolver
 public:
     JacobiSolver();
 
-    static Vector solve(const Matrix &lhs, const Vector &rhs, int &iterations, double tol = Const::EPS);
+    static Vector solve(const Matrix &lhs, const Vector &rhs, int &iterations,
+                        double tol = Const::EPS);
 
     static bool removeZeroesFromDiagonal(Matrix &lhs, Vector &rhs);
 };

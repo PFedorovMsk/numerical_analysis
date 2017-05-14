@@ -38,8 +38,8 @@ inline double SumSqr(const Matrix &mat)
 }
 
 
-void JacobiEigenvalues::compute(const Matrix &mat, Vector &eigenValues, Matrix &eigenVectors, int &iterations,
-                                double &error, double tol)
+void JacobiEigenvalues::compute(const Matrix &mat, Vector &eigenValues, Matrix &eigenVectors,
+                                int &iterations, double &error, double tol)
 {
     Matrix a = mat;
     assert(a == a.transpose());

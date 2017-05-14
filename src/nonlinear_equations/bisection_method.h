@@ -11,7 +11,8 @@ class BisectionMethod
 public:
     BisectionMethod();
 
-    static bool findRoot(const Function &f, double a, double b, double tol, int &iterations, double &root);
+    static bool findRoot(const Function &f, double a, double b, double tol, int &iterations,
+                         double &root);
 };
 
 

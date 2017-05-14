@@ -11,7 +11,8 @@ class NewtonsMethod
 public:
     NewtonsMethod();
 
-    static bool findRoot(const Function &f, const Function &df, double x0, double tol, int &iterations, double &root);
+    static bool findRoot(const Function &f, const Function &df, double x0, double tol,
+                         int &iterations, double &root);
 };
 
 

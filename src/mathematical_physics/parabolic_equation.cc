@@ -3,8 +3,9 @@
 #include <cassert>
 
 
-ParabolicEquation::ParabolicEquation(double _a, double _b, double _c, Function2 *const _f, double _alpha, double _beta,
-                                     Function *const _phi1, double _gamma, double _delta, Function *const _phi2,
+ParabolicEquation::ParabolicEquation(double _a, double _b, double _c, Function2 *const _f,
+                                     double _alpha, double _beta, Function *const _phi1,
+                                     double _gamma, double _delta, Function *const _phi2,
                                      Function *const _psi, double _xMax, double _tMax)
     : a(_a)
     , b(_b)
@@ -43,7 +44,8 @@ void ParabolicEquation::computeSteps(double &dx, double &dt, int &countbyX, int 
     dx = xMax / (countbyX - 1);
 }
 
-void ParabolicEquation::computeError(const Matrix &u, Function2 *const analitic, double dx, double dt, double &error)
+void ParabolicEquation::computeError(const Matrix &u, Function2 *const analitic, double dx,
+                                     double dt, double &error)
 {
     Matrix a = Matrix::Zero(u.rows(), u.cols());
     for (int k = 0; k < u.rows(); ++k) {
@@ -71,17 +73,18 @@ void ParabolicEquation::solveExplicit(double &dx, double &dt, Matrix &u) const
     for (int k = 0; k < K - 1; k++) {
         //заполняем каждый временной слой, кроме граничных точек (0, k) и (L, k):
         for (int j = 1; j < J - 1; j++) {
-            u(k + 1, j) = u(k, j - 1) * (s - p) + u(k, j) * (1.0 - 2.0 * s + c * dt) + u(k, j + 1) * (s + p) +
-                          dt * f(j * dx, k * dt);
+            u(k + 1, j) = u(k, j - 1) * (s - p) + u(k, j) * (1.0 - 2.0 * s + c * dt) +
+                          u(k, j + 1) * (s + p) + dt * f(j * dx, k * dt);
         }
 
         //граничные условия:
         double z  = 0.5 * pow(dx, 2) / a;
         double tk = (k + 1) * dt;
-        u(k + 1, 0) = (alpha * (u(k + 1, 1) + z * u(k, 0) / dt + z * f(0.0, tk)) + phi1(tk) * (b * z - dx)) /
-                      (alpha * (1.0 + z / dt - c * z) + beta * (b * z - dx));
-        u(k + 1, J - 1) =
-            (gamma * (u(k + 1, J - 2) + z * u(k, J - 1) / dt + z * f(xMax, tk)) + phi2(tk) * (b * z + dx)) /
-            (gamma * (1.0 + z / dt - c * z) + delta * (b * z + dx));
+        u(k + 1, 0) =
+            (alpha * (u(k + 1, 1) + z * u(k, 0) / dt + z * f(0.0, tk)) + phi1(tk) * (b * z - dx)) /
+            (alpha * (1.0 + z / dt - c * z) + beta * (b * z - dx));
+        u(k + 1, J - 1) = (gamma * (u(k + 1, J - 2) + z * u(k, J - 1) / dt + z * f(xMax, tk)) +
+                           phi2(tk) * (b * z + dx)) /
+                          (gamma * (1.0 + z / dt - c * z) + delta * (b * z + dx));
     }
 }

@@ -9,13 +9,14 @@
 class ParabolicEquation
 {
 public:
-    ParabolicEquation(double _a, double _b, double _c, Function2 *const _f, double _alpha, double _beta,
-                      Function *const _phi1, double _gamma, double _delta, Function *const _phi2, Function *const _psi,
-                      double _xMax, double _tMax);
+    ParabolicEquation(double _a, double _b, double _c, Function2 *const _f, double _alpha,
+                      double _beta, Function *const _phi1, double _gamma, double _delta,
+                      Function *const _phi2, Function *const _psi, double _xMax, double _tMax);
 
     void solveExplicit(double &h, double &dt, Matrix &u) const;
 
-    void computeError(const Matrix &numeric, Function2 *const analitic, double dx, double dt, double &error);
+    void computeError(const Matrix &numeric, Function2 *const analitic, double dx, double dt,
+                      double &error);
 
 private:
     void computeSteps(double &dx, double &dt, int &countByX, int &countByT) const;

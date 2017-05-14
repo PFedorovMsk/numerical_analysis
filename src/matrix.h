@@ -14,7 +14,8 @@ using CRowVector = Eigen::RowVectorXcd;
 
 
 void MakeBlockVector(const Vector &vec1, const Vector &vec2, Vector &blockVec);
-void MakeBlockMatrix(const Matrix &mat1, const Matrix &mat2, Matrix &blockMat, bool vertical = false);
+void MakeBlockMatrix(const Matrix &mat1, const Matrix &mat2, Matrix &blockMat,
+                     bool vertical = false);
 
 
 #endif // MATRIX_H

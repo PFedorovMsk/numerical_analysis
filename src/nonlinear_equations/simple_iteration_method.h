@@ -12,7 +12,8 @@ public:
     SimpleIterationMethod();
 
     static bool findRoot(const Function &f, double x0, double tol, int &iterations, double &root);
-    static bool findRoot(const MultivarFunction &f, const Vector &x0, double tol, int &iterations, Vector &root);
+    static bool findRoot(const MultivarFunction &f, const Vector &x0, double tol, int &iterations,
+                         Vector &root);
 };
 
 
