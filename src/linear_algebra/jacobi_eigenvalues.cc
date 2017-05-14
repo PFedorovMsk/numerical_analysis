@@ -16,9 +16,9 @@ inline double MaxNondiagonalElement(const Matrix &mat, int &row, int &col)
         for (int i = 0; i < j; ++i) {
             double value = fabs(mat(i, j));
             if (value > max) {
-                value = max;
-                row   = i;
-                col   = j;
+                max = value;
+                row = i;
+                col = j;
             }
         }
     }
