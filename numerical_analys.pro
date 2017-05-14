@@ -251,7 +251,8 @@ HEADERS += \
     src/nonlinear_equations/function.h \
     src/nonlinear_equations/newtons_method.h \
     tests/nonlinear_equations_test.h \
-    src/nonlinear_equations/simple_iteration_method.h
+    src/nonlinear_equations/simple_iteration_method.h \
+    src/mathematical_physics/parabolic_equation.h
 
 SOURCES += \
     src/main.cc \
@@ -267,6 +268,7 @@ SOURCES += \
     src/nonlinear_equations/bisection_method.cc \
     src/nonlinear_equations/newtons_method.cc \
     tests/nonlinear_equations_test.cc \
-    src/nonlinear_equations/simple_iteration_method.cc
+    src/nonlinear_equations/simple_iteration_method.cc \
+    src/mathematical_physics/parabolic_equation.cc
 
 DISTFILES +=

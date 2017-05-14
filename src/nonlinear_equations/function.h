@@ -18,6 +18,20 @@ public:
 };
 
 
+class Function2
+{
+public:
+    Function2()
+    {
+    }
+    virtual ~Function2()
+    {
+    }
+
+    virtual double operator()(double x, double t) const = 0;
+};
+
+
 class MultivarFunction
 {
 public:
