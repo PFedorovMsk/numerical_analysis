@@ -13,7 +13,8 @@ public:
                       double _beta, Function *const _phi1, double _gamma, double _delta,
                       Function *const _phi2, Function *const _psi, double _xMax, double _tMax);
 
-    void solveExplicit(double &h, double &dt, Matrix &u) const;
+    void solveExplicit(double &dx, double &dt, Matrix &u) const;
+    void solveImplicit(double &dx, double &dt, Matrix &u) const;
 
     void computeError(const Matrix &numeric, Function2 *const analitic, double dx, double dt,
                       double &error);

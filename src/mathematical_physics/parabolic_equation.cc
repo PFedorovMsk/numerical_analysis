@@ -88,3 +88,48 @@ void ParabolicEquation::solveExplicit(double &dx, double &dt, Matrix &u) const
                           (gamma * (1.0 + z / dt - c * z) + delta * (b * z + dx));
     }
 }
+
+void ParabolicEquation::solveImplicit(double &dx, double &dt, Matrix &u) const
+{
+    int J, K;
+    computeSteps(dx, dt, J, K);
+
+    u = Matrix::Zero(K, J);
+
+    for (int j = 0; j < J; j++) {
+        u(0, j) = psi(j * dx);
+    }
+
+    double s = a * dt / pow(dx, 2);
+    double p = 0.5 * b * dt / dx;
+
+    //векторы для прогонки :
+    Matrix lhs = Matrix::Zero(J, J);
+    Vector rhs = Vector::Zero(J);
+
+    for (int k = 0; k < K - 1; k++) {
+        for (int j = 1; j < J - 1; j++) {
+            rhs(j) = -u(k, j) - dt * f(j * dx, (k + 1) * dt);
+        }
+
+        double z = 0.5 * pow(dx, 2) / a;
+
+        for (int i = 1; i < J - 1; i++) {
+            lhs(i, i - 1) = s - p;
+            lhs(i, i)     = -1.0 - 2.0 * s + c * dt;
+            lhs(i, i + 1) = s + p;
+        }
+        lhs(0, 0)         = alpha * (1.0 + z / dt - c * z) + beta * (b * z - dx);
+        lhs(0, 1)         = -alpha;
+        lhs(J - 1, J - 2) = -gamma;
+        lhs(J - 1, J - 1) = gamma * (1.0 + z / dt - c * z) + delta * (b * z + dx);
+
+        rhs(0) =
+            alpha * z * (u(k, 0) / dt + f(0.0, (k + 1) * dt)) + phi1((k + 1) * dt) * (b * z - dx);
+
+        rhs(J - 1) = gamma * z * (u(k, J - 1) / dt + f(0.0, (k + 1) * dt)) +
+                     phi2((k + 1) * dt) * (b * z + dx);
+
+        u.row(k + 1) = (lhs.colPivHouseholderQr().solve(rhs)).transpose();
+    }
+}
