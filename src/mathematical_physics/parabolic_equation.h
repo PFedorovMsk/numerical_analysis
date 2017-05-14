@@ -15,6 +15,7 @@ public:
 
     void solveExplicit(double &dx, double &dt, Matrix &u) const;
     void solveImplicit(double &dx, double &dt, Matrix &u) const;
+    void solveCrankNicolson(double &dx, double &dt, Matrix &u, double weight) const;
 
     void computeError(const Matrix &numeric, Function2 *const analitic, double dx, double dt,
                       double &error);
